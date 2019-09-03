@@ -20,11 +20,11 @@ The MVP should have following features:
 
 ## Additional features
 
-⋅⋅* Automated setlist creation
-..* Statistics of played songs
-..* Serving data of played songs between users
-..* Commenting 
+* Automated setlist creation
+* Statistics of played songs
+* Serving data of played songs between users
+* Commenting 
 
 ## Tests 
 
-I'm planning to do E2E tests with Cypress library. 
+I'm planning to do E2E tests using Cypress library. 
