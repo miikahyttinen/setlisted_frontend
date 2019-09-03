@@ -2,7 +2,7 @@
 
 Setlisted is a tool to view and save setlists. Front-end runs React in a browser and is served by REST Api back-end wirtten with Node.js. This is an excericse project for Full Stack Programming course at the University of Helsinki (CS Department). 
 
-Working hourse: https://github.com/miikahyttinen/setlisted_frontend/blob/master/hours.md
+**Working hours**: https://github.com/miikahyttinen/setlisted_frontend/blob/master/hours.md
 
 ## The problem 
 
