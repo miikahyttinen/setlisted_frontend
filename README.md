@@ -1,34 +1,68 @@
-# Setlisted
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Setlisted is a tool to view and save setlists. Front-end runs React in a browser and is served by REST Api back-end wirtten with Node.js. This is an excericse project for Full Stack Programming course at the University of Helsinki (CS Department). 
+## Available Scripts
 
-**Working hours:** https://github.com/miikahyttinen/setlisted_frontend/blob/master/hours.md
+In the project directory, you can run:
 
-**Back end repository:** https://github.com/miikahyttinen/setlisted_backend
+### `npm start`
 
-## The problem 
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-My passion is to solve real world problems with programming. Setlisted solves a problem of a writing and storing setlists for a live music performance. It is very common to write setlists by hand (or at list by hand on a computer) and there is no state-of-the-art way of storing or sharing those. Making a setlist is a time-consuming problem. It can take an hour and you can easily make mistakes eg. forget the new songs you planned to play or get stuck in patterns like repeatedly playing the same songs in every performance. 
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-## Minimum viable product
+### `npm test`
 
-The MVP should have following features: 
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-1. registration for new users
-2. login as a user
-3. creating a new setlist
-4. viewing all setlists of a user
-5. sharing setlists to everyone (in some way) as user
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-## Additional features
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-* Automated setlist creation
-* Statistics of played songs
-* Serving data of played songs between users
-* Commenting 
+### `npm run eject`
 
-## Tests 
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-I'm planning to do E2E tests using Cypress library. 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
