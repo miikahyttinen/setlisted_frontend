@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import queryString from 'query-string'
 import axios from 'axios'
+import TrackList from './TrackList'
 
 const Button = styled.button`
   background: transparent;
@@ -20,12 +21,13 @@ const Page = styled.div`
 
 const App = () => {
   const [accessToken, setAccessToken] = useState('')
+  const [spotifyData, setSpotifyData] = useState({})
 
   useEffect(() => {
     setAccessToken(queryString.parse(window.location.search).access_token)
     axios
       .get('http://localhost:3001/spotify')
-      .then(response => console.log('RES', response.data))
+      .then(response => setSpotifyData(response.data))
   }, [])
 
   return (
@@ -33,15 +35,12 @@ const App = () => {
       <a href='https://setlisted-oauth-service.herokuapp.com/login'>
         <Button>Login with Spotify</Button>
       </a>
+      <div>
+        <h1>Welcome to Setlisted</h1>
+        <TrackList spotifyData={spotifyData} />
+      </div>
     </Page>
   )
 }
-/*
-    <div>
-      <h1>Welcome to Setlisted</h1>
-      {songs.map(song => {
-        return <div> {song.name} </div>
-      })}
-    </div> */
 
 export default App
