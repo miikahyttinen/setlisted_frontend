@@ -37,7 +37,7 @@ const App = () => {
       </a>
       <div>
         <h1>Welcome to Setlisted</h1>
-        <TrackList spotifyData={spotifyData} />
+        <TrackList tracks={spotifyData} />
       </div>
     </Page>
   )

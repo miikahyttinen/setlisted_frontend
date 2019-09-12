@@ -19,16 +19,17 @@ const List = styled.ul`
   widht: 50%;
 `
 
-const TrackList = ({ spotifyData }) => {
-  if (!spotifyData.tracks) {
+const TrackList = ({ tracks }) => {
+  if (!Array.isArray(tracks)) {
     return <div> </div>
   }
-  console.log('PROPS TRACKLIST -->', spotifyData.tracks.items)
+
+  console.log('spotify data', tracks)
 
   return (
     <Container>
       <List>
-        {spotifyData.tracks.items.map(item => (
+        {tracks.map(item => (
           <Track> {item.track.name.split(' - ')[0]} </Track>
         ))}
       </List>
