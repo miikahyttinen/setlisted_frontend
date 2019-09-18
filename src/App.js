@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import queryString from 'query-string'
-import axios from 'axios'
 import TrackList from './TrackList'
+import { connect } from 'react-redux'
+import { initializeTracks } from './reducers/spotifyReducer'
 
 const Button = styled.button`
   background: transparent;
@@ -19,16 +20,15 @@ const Page = styled.div`
   text-align: center;
 `
 
-const App = () => {
+const App = props => {
   const [accessToken, setAccessToken] = useState('')
-  const [spotifyData, setSpotifyData] = useState({})
 
   useEffect(() => {
     setAccessToken(queryString.parse(window.location.search).access_token)
-    axios
-      .get('http://localhost:3001/spotify')
-      .then(response => setSpotifyData(response.data))
+    props.initializeTracks()
   }, [])
+
+  console.log('ROW 31 APP', props)
 
   return (
     <Page>
@@ -37,10 +37,19 @@ const App = () => {
       </a>
       <div>
         <h1>Welcome to Setlisted</h1>
-        <TrackList tracks={spotifyData} />
+        <TrackList tracks={props.tracks} />
       </div>
     </Page>
   )
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    tracks: state
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { initializeTracks }
+)(App)

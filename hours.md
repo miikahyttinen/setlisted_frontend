@@ -10,5 +10,6 @@
 | 11.9.2019 | 2     | Front               | Creating UI for tracks plus styling      |
 | 12.9.2019 | 2     | Back                | Fixing data already at backend           |
 | 12.9.2019 | 1     | Front               | Changes in front end code for fixed data |
+| 18.9.2019 | 3     | Front               | Refactoring & setting up redux           |
 
-Total: 18,5h
+Total: 21,5h

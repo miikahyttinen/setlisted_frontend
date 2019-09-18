@@ -20,11 +20,9 @@ const List = styled.ul`
 `
 
 const TrackList = ({ tracks }) => {
-  if (!Array.isArray(tracks)) {
+  if (!Array.isArray(tracks) || tracks.length === 1) {
     return <div> </div>
   }
-
-  console.log('spotify data', tracks)
 
   return (
     <Container>
