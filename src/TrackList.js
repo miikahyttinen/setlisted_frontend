@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import ImportButton from './ImportButton'
 
-const Container = styled.div`
-  width: 20%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+const ContainerRight = styled.div`
+  float: right;
+  width: 50%;
+  background: #daf7a6;
 `
+
+const ContainerLeft = styled.div`
+  float: left;
+  width: 50%;
+  background: #daf7a6;
+`
+
+const List = styled.ul``
 
 const Track = styled.li`
   list-style-type: none;
@@ -15,24 +24,62 @@ const Track = styled.li`
   margin: 2px;
 `
 
-const List = styled.ul`
-  widht: 50%;
-`
+const TrackList = props => {
+  const [listLeft, setListLeft] = useState([])
+  const [listRight, setListRight] = useState([])
 
-const TrackList = ({ tracks }) => {
-  if (!Array.isArray(tracks) || tracks.length === 1) {
-    return <div> </div>
+  useEffect(() => {
+    setListLeft(props.tracks)
+  }, [])
+
+  const transferToList = (item, origin) => {
+    if (origin === 'left') {
+      setListLeft(listLeft.filter(listItem => listItem !== item))
+      setListRight(listRight.concat(item))
+    }
+    if (origin === 'right') {
+      setListRight(listRight.filter(listItem => listItem !== item))
+      setListLeft(listLeft.concat(item))
+    }
+  }
+
+  if (!Array.isArray(props.tracks) || props.tracks.length === 0) {
+    return (
+      <div>
+        <ImportButton />
+      </div>
+    )
+  }
+
+  const generateTrackList = (trackList, origin) => {
+    return (
+      <List>
+        {trackList.map(item => {
+          var track = item.track.name.split(' - ')[0]
+          return track.includes('(') ? (
+            <Track onClick={() => transferToList(item, origin)}>
+              {track.split('(')[0]}{' '}
+            </Track>
+          ) : (
+            <Track onClick={() => transferToList(item, origin)}>{track}</Track>
+          )
+        })}
+      </List>
+    )
   }
 
   return (
-    <Container>
-      <List>
-        {tracks.map(item => (
-          <Track> {item.track.name.split(' - ')[0]} </Track>
-        ))}
-      </List>
-    </Container>
+    <div>
+      <ContainerLeft>{generateTrackList(listLeft, 'left')}</ContainerLeft>
+      <ContainerRight>{generateTrackList(listRight, 'right')}</ContainerRight>
+    </div>
   )
 }
 
-export default TrackList
+const mapStateToProps = state => {
+  return {
+    tracks: state
+  }
+}
+
+export default connect(mapStateToProps)(TrackList)
