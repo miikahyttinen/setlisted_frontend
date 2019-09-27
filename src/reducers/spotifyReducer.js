@@ -1,10 +1,10 @@
 import spotifyService from '../services/spotifyService'
 
-export const initializeTracks = () => {
+export const initializeSpotifyTracks = () => {
   return async dispatch => {
     const tracks = await spotifyService.getPlaylist()
     dispatch({
-      type: 'INIT',
+      type: 'INIT_SPOTIFY',
       content: tracks
     })
   }
@@ -12,7 +12,7 @@ export const initializeTracks = () => {
 
 const spotifyReducer = (state = [], action) => {
   switch (action.type) {
-    case 'INIT':
+    case 'INIT_SPOTIFY':
       return state.concat(action.content)
     default:
       return state

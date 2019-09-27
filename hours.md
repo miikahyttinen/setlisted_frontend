@@ -12,5 +12,6 @@
 | 12.9.2019 | 1     | Front               | Changes in front end code for fixed data   |
 | 18.9.2019 | 3     | Front               | Refactoring & setting up redux             |
 | 19.9.2019 | 3     | Front               | Adding React router & UI for slecting song |
+| 27.9.2019 | 4     | Front, back         | Started a feature to create seliststs      |
 
-Total: 24,5h
+Total: 28,5h

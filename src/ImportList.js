@@ -24,12 +24,13 @@ const Track = styled.li`
   margin: 2px;
 `
 
-const TrackList = props => {
+const ImportList = props => {
+  console.log('PROPS', props)
   const [listLeft, setListLeft] = useState([])
   const [listRight, setListRight] = useState([])
 
   useEffect(() => {
-    setListLeft(props.setlists)
+    setListLeft(props.tracks)
   }, [])
 
   const transferToList = (item, origin) => {
@@ -43,7 +44,7 @@ const TrackList = props => {
     }
   }
 
-  if (!Array.isArray(props.setlists) || props.setlists.length === 0) {
+  if (!Array.isArray(props.tracks) || props.tracks.length === 0) {
     return (
       <div>
         <ImportButton />
@@ -55,33 +56,22 @@ const TrackList = props => {
     return (
       <List>
         {trackList.map(item => {
-          console.log('ITEM:', item)
-          return (
+          var track = item.track.name.split(' - ')[0]
+          return track.includes('(') ? (
             <Track onClick={() => transferToList(item, origin)}>
-              {item.song} - {item.key}
+              {track.split('(')[0]}{' '}
             </Track>
+          ) : (
+            <Track onClick={() => transferToList(item, origin)}>{track}</Track>
           )
         })}
       </List>
     )
   }
 
-  const handleSetlistChange = event => {
-    console.log('EVENT: ')
-  }
-
   return (
     <div>
-      <ContainerLeft>
-        <div>
-          <select onChange={handleSetlistChange}>
-            {props.setlists.map(setlist => {
-              return <option value={setlist.name}>{setlist.name}</option>
-            })}
-          </select>
-        </div>
-        {generateTrackList(listLeft, 'left')}
-      </ContainerLeft>
+      <ContainerLeft>{generateTrackList(listLeft, 'left')}</ContainerLeft>
       <ContainerRight>{generateTrackList(listRight, 'right')}</ContainerRight>
     </div>
   )
@@ -89,8 +79,8 @@ const TrackList = props => {
 
 const mapStateToProps = state => {
   return {
-    setlists: state.setlists
+    tracks: state.spotifyTracks
   }
 }
 
-export default connect(mapStateToProps)(TrackList)
+export default connect(mapStateToProps)(ImportList)

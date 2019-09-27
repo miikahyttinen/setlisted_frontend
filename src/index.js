@@ -4,14 +4,17 @@ import App from './App'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import spotifyReducer from './reducers/spotifyReducer'
-import { createStore, compose, applyMiddleware } from 'redux'
+import setlistReducer from './reducers/setlistReducer'
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const store = createStore(
-  spotifyReducer,
-  composeEnhancer(applyMiddleware(thunk))
-)
+const reducer = combineReducers({
+  spotifyTracks: spotifyReducer,
+  setlists: setlistReducer
+})
+
+const store = createStore(reducer, composeEnhancer(applyMiddleware(thunk)))
 
 const render = () => {
   ReactDOM.render(

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import queryString from 'query-string'
 import TrackList from './TrackList'
+import ImportList from './ImportList'
 import { connect } from 'react-redux'
-import { initializeTracks } from './reducers/spotifyReducer'
+import { initializeSpotifyTracks } from './reducers/spotifyReducer'
+import { initializeSetlists } from './reducers/setlistReducer'
 import {
   BrowserRouter as Router,
   Route,
@@ -25,8 +27,9 @@ const linkStyle = {
 
 const App = props => {
   useEffect(() => {
+    props.initializeSetlists()
     if (queryString.parse(window.location.search).access_token !== undefined) {
-      props.initializeTracks()
+      props.initializeSpotifyTracks()
     }
   }, [])
 
@@ -38,13 +41,17 @@ const App = props => {
             <Link style={linkStyle} to='/'>
               HOME
             </Link>
-            <Link style={linkStyle} to='/playlists'>
-              PLAYLISTS
+            <Link style={linkStyle} to='/setlists'>
+              SETLISTS
+            </Link>
+            <Link style={linkStyle} to='/import'>
+              IMPORT
             </Link>
           </div>
 
           <Route exact path='/' render={() => <Home />} />
-          <Route exact path='/playlists' render={() => <TrackList />} />
+          <Route exact path='/setlists' render={() => <TrackList />} />
+          <Route exact path='/import' render={() => <ImportList />} />
         </div>
       </Router>
     </Page>
@@ -59,5 +66,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { initializeTracks }
+  { initializeSpotifyTracks, initializeSetlists }
 )(App)
