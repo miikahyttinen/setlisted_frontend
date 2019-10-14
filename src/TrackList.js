@@ -25,11 +25,12 @@ const Track = styled.li`
 `
 
 const TrackList = props => {
+  const [allSetlists, setAllSetlists] = useState([])
   const [listLeft, setListLeft] = useState([])
   const [listRight, setListRight] = useState([])
 
   useEffect(() => {
-    setListLeft(props.setlists)
+    setAllSetlists(props.setlists)
   }, [])
 
   const transferToList = (item, origin) => {
@@ -43,31 +44,40 @@ const TrackList = props => {
     }
   }
 
-  if (!Array.isArray(props.setlists) || props.setlists.length === 0) {
-    return (
-      <div>
-        <ImportButton />
-      </div>
-    )
-  }
-
-  const generateTrackList = (trackList, origin) => {
-    return (
-      <List>
-        {trackList.map(item => {
-          console.log('ITEM:', item)
-          return (
-            <Track onClick={() => transferToList(item, origin)}>
-              {item.song} - {item.key}
-            </Track>
-          )
-        })}
-      </List>
-    )
+  const generateTrackList = list => {
+    if (list === 'left') {
+      return (
+        <List>
+          {listLeft.map(item => {
+            return (
+              <Track onClick={() => transferToList(item, list)}>
+                {item.name} - {item.key}
+              </Track>
+            )
+          })}
+        </List>
+      )
+    }
+    if (list === 'right') {
+      return (
+        <List>
+          {listRight.map(item => {
+            return (
+              <Track onClick={() => transferToList(item, list)}>
+                {item.name} - {item.key}
+              </Track>
+            )
+          })}
+        </List>
+      )
+    }
   }
 
   const handleSetlistChange = event => {
-    console.log('EVENT: ')
+    const setlistName = event.target.value
+    setListLeft(
+      allSetlists.filter(setlist => setlist.name === setlistName)[0].tracks
+    )
   }
 
   return (
@@ -80,9 +90,12 @@ const TrackList = props => {
             })}
           </select>
         </div>
-        {generateTrackList(listLeft, 'left')}
+        {generateTrackList('left')}
       </ContainerLeft>
-      <ContainerRight>{generateTrackList(listRight, 'right')}</ContainerRight>
+      <ContainerRight>
+        <h5>NEW SETLIST</h5>
+        {generateTrackList('right')}
+      </ContainerRight>
     </div>
   )
 }

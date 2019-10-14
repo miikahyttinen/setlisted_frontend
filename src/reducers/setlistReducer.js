@@ -11,7 +11,6 @@ export const initializeSetlists = () => {
 }
 
 const setlistReducer = (state = [], action) => {
-  console.log('SETLIST REDUCER ACTION:', action)
   switch (action.type) {
     case 'INIT_SETLIST':
       return state.concat(action.content)

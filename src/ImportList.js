@@ -25,7 +25,6 @@ const Track = styled.li`
 `
 
 const ImportList = props => {
-  console.log('PROPS', props)
   const [listLeft, setListLeft] = useState([])
   const [listRight, setListRight] = useState([])
 
