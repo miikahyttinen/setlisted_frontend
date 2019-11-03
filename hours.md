@@ -16,5 +16,6 @@
 | 27.9.2019  | 4     | Front, back         | Started a feature to create seliststs       |
 | 30.10.2019 | 3     | Back                | Setting up MongoDB connection               |
 | 30.10.2019 | 3     | Back                | Doing post endpoints for songs and setlists |
+| 3.11.2019  | 2     | Back                | Finishing endpoint for getting setlists     |
 
-Total: 37,5h
+Total: 39,5h
