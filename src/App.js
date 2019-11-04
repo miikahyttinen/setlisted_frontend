@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import queryString from 'query-string'
-import TrackList from './TrackList'
+import SongList from './SongList'
 import ImportList from './ImportList'
 import { connect } from 'react-redux'
 import { initializeSpotifyTracks } from './reducers/spotifyReducer'
@@ -50,7 +50,7 @@ const App = props => {
           </div>
 
           <Route exact path='/' render={() => <Home />} />
-          <Route exact path='/setlists' render={() => <TrackList />} />
+          <Route exact path='/setlists' render={() => <SongList />} />
           <Route exact path='/import' render={() => <ImportList />} />
         </div>
       </Router>

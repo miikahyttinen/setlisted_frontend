@@ -17,5 +17,7 @@
 | 30.10.2019 | 3     | Back                | Setting up MongoDB connection               |
 | 30.10.2019 | 3     | Back                | Doing post endpoints for songs and setlists |
 | 3.11.2019  | 2     | Back                | Finishing endpoint for getting setlists     |
+| 4.11.2019  | 2     | Front               | Connecting front end to api                 |
+| 4.11.2019  | 2     | Front               | Setlist creation from front end             |
 
-Total: 39,5h
+Total: 43,5h
