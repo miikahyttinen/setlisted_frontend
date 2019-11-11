@@ -1,9 +1,12 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/spotify'
+const baseApiUrl = 'http://localhost:3001/'
 
-const getPlaylist = async () => {
-  const response = await axios.get(baseUrl)
+const getPlaylist = async (id, token) => {
+  const response = await axios.get(`${baseApiUrl}spotify/${id}`, {
+    headers: { Authorization: token }
+  })
+  console.log('RESPONSE DATA', response.data)
   return await response.data
 }
 

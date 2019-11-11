@@ -10,14 +10,14 @@ const Button = styled.button`
   padding: 0.25em 1em;
 `
 
-const ImportButton = () => {
+const AuthButton = props => {
   return (
     <div>
       <a href='https://setlisted-oauth-service.herokuapp.com/login'>
-        <Button>Import playlist from Spotify</Button>
+        <Button>Import playlists from Spotify</Button>
       </a>
     </div>
   )
 }
 
-export default ImportButton
+export default AuthButton

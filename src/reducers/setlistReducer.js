@@ -1,8 +1,8 @@
 import setlistService from '../services/setlistService'
 
-export const initializeSetlists = () => {
+export const initializeSetlists = id => {
   return async dispatch => {
-    const setlist = await setlistService.getSetlist()
+    const setlist = await setlistService.getSetlist(id)
     dispatch({
       type: 'INIT_SETLIST',
       content: setlist

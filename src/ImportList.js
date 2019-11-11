@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import ImportButton from './ImportButton'
+import AuthButton from './AuthButton'
+import { initializeSpotifyTracks } from './reducers/spotifyReducer'
+import spotifyReducer from './reducers/spotifyReducer'
 
 const ContainerRight = styled.div`
   float: right;
@@ -23,10 +25,16 @@ const Track = styled.li`
   border-radius: 5px;
   margin: 2px;
 `
+const Button = styled.button`
+  border: 2px solid palevioletred;
+  border-radius: 5px;
+  margin: 2px;
+`
 
 const ImportList = props => {
   const [listLeft, setListLeft] = useState([])
   const [listRight, setListRight] = useState([])
+  const [spotifyPlaylistId, setSpotifyPlaylistId] = useState('')
 
   useEffect(() => {
     setListLeft(props.tracks)
@@ -43,12 +51,22 @@ const ImportList = props => {
     }
   }
 
-  if (!Array.isArray(props.tracks) || props.tracks.length === 0) {
+  if (props.accessToken === '') {
     return (
       <div>
-        <ImportButton />
+        <AuthButton />
       </div>
     )
+  }
+
+  const handleSpotifyPlaylistIdChange = event => {
+    const id = event.target.value
+    setSpotifyPlaylistId(id)
+  }
+
+  const importPlaylist = async () => {
+    const token = props.accessToken
+    props.initializeSpotifyTracks(spotifyPlaylistId, token)
   }
 
   const generateTrackList = (trackList, origin) => {
@@ -70,6 +88,13 @@ const ImportList = props => {
 
   return (
     <div>
+      Playlist ID:
+      <input
+        type='text'
+        value={spotifyPlaylistId}
+        onChange={handleSpotifyPlaylistIdChange}
+      ></input>
+      <Button onClick={importPlaylist}>IMPORT PLAYLIST</Button>
       <ContainerLeft>{generateTrackList(listLeft, 'left')}</ContainerLeft>
       <ContainerRight>{generateTrackList(listRight, 'right')}</ContainerRight>
     </div>
@@ -78,8 +103,13 @@ const ImportList = props => {
 
 const mapStateToProps = state => {
   return {
-    tracks: state.spotifyTracks
+    tracks: state.spotifyTracks,
+    playlistId: state.platlistId,
+    accessToken: state.accessToken
   }
 }
 
-export default connect(mapStateToProps)(ImportList)
+export default connect(
+  mapStateToProps,
+  { initializeSpotifyTracks }
+)(ImportList)

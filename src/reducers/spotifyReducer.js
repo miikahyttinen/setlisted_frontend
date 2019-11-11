@@ -1,8 +1,8 @@
 import spotifyService from '../services/spotifyService'
 
-export const initializeSpotifyTracks = () => {
+export const initializeSpotifyTracks = (id, token) => {
   return async dispatch => {
-    const tracks = await spotifyService.getPlaylist()
+    const tracks = await spotifyService.getPlaylist(id, token)
     dispatch({
       type: 'INIT_SPOTIFY',
       content: tracks

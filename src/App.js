@@ -5,6 +5,7 @@ import ImportList from './ImportList'
 import { connect } from 'react-redux'
 import { initializeSpotifyTracks } from './reducers/spotifyReducer'
 import { initializeSetlists } from './reducers/setlistReducer'
+import { createAccessToken } from './reducers/accessTokenReducer'
 import {
   BrowserRouter as Router,
   Route,
@@ -29,7 +30,9 @@ const App = props => {
   useEffect(() => {
     props.initializeSetlists()
     if (queryString.parse(window.location.search).access_token !== undefined) {
-      props.initializeSpotifyTracks()
+      props.createAccessToken(
+        queryString.parse(window.location.search).access_token
+      )
     }
   }, [])
 
@@ -60,11 +63,12 @@ const App = props => {
 
 const mapStateToProps = state => {
   return {
-    tracks: state
+    spotifyPlaylistId: state.playlistId,
+    accessToken: state.accessToken
   }
 }
 
 export default connect(
   mapStateToProps,
-  { initializeSpotifyTracks, initializeSetlists }
+  { initializeSpotifyTracks, initializeSetlists, createAccessToken }
 )(App)
