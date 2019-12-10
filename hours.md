@@ -22,6 +22,6 @@
 | 10.11.2019 | 4     | Front               | Spotify import by playlist ID               |
 | 8.12.2019  | 2     | Front               | Styling                                     |
 | 9.12.2019  | 3     | Front               | Parsing import data in fornt end            |
-| 10.12.2019 | 1     | Back                | New endpoints                               |
+| 10.12.2019 | 2     | Back                | New endpoints                               |
 
-Total: 47,5h
+Total: 55,5h
