@@ -1,22 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
+import SpotifyLogo from './graphics/spotify_logo.png'
 
 const Button = styled.button`
   background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
   color: palevioletred;
-  margin: 0.5em 1em;
+  border: 2px solid palevioletred;
   padding: 0.25em 1em;
+  border-radius: 3px;
+`
+const Image = styled.img`
+  widht: 30px;
+  height: 30px;
+`
+
+const ButtonContainer = styled.div`
+  height: auto;
 `
 
 const AuthButton = props => {
   return (
-    <div>
+    <ButtonContainer>
       <a href='https://setlisted-oauth-service.herokuapp.com/login'>
-        <Button>Import playlists from Spotify</Button>
+        <Button>Authorize Setlisted to import playlists from Spotify</Button>
+        <Image src={SpotifyLogo} />
       </a>
-    </div>
+    </ButtonContainer>
   )
 }
 

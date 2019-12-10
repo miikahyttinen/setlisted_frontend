@@ -4,7 +4,7 @@ import SongList from './SongList'
 import ImportList from './ImportList'
 import { connect } from 'react-redux'
 import { initializeSpotifyTracks } from './reducers/spotifyReducer'
-import { initializeSetlists } from './reducers/setlistReducer'
+import { initializeSetlists, initializeSongs } from './reducers/setlistReducer'
 import { createAccessToken } from './reducers/accessTokenReducer'
 import {
   BrowserRouter as Router,
@@ -18,9 +18,14 @@ import styled from 'styled-components'
 
 const Page = styled.div`
   background: #daf7a6;
-  height: 100%;
+  height: 1000px;
   text-align: center;
 `
+
+const NavBar = styled.div`
+  padding: 20px;
+`
+
 const linkStyle = {
   textDecoration: 'none',
   padding: '10px'
@@ -29,6 +34,7 @@ const linkStyle = {
 const App = props => {
   useEffect(() => {
     props.initializeSetlists()
+    props.initializeSongs()
     if (queryString.parse(window.location.search).access_token !== undefined) {
       props.createAccessToken(
         queryString.parse(window.location.search).access_token
@@ -40,7 +46,7 @@ const App = props => {
     <Page>
       <Router>
         <div>
-          <div>
+          <NavBar>
             <Link style={linkStyle} to='/'>
               HOME
             </Link>
@@ -50,7 +56,7 @@ const App = props => {
             <Link style={linkStyle} to='/import'>
               IMPORT
             </Link>
-          </div>
+          </NavBar>
 
           <Route exact path='/' render={() => <Home />} />
           <Route exact path='/setlists' render={() => <SongList />} />
@@ -68,7 +74,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { initializeSpotifyTracks, initializeSetlists, createAccessToken }
-)(App)
+export default connect(mapStateToProps, {
+  initializeSpotifyTracks,
+  initializeSetlists,
+  initializeSongs,
+  createAccessToken
+})(App)

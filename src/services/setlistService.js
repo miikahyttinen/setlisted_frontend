@@ -1,10 +1,20 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001'
+const baseApiUrl = 'http://localhost:3001'
 
-const getSetlist = async () => {
-  const response = await axios.get(`${baseUrl}/setlist/all`)
+const getAllSetlists = async () => {
+  const response = await axios.get(`${baseApiUrl}/setlist/all`)
   return await response.data
+}
+
+const getAllSongs = async () => {
+  const response = await axios.get(`${baseApiUrl}/song/all`)
+  const allSongs = {
+    id: 'allsongs',
+    name: 'All Songs',
+    songs: response.data
+  }
+  return allSongs
 }
 
 const sendSetlist = async (list, name) => {
@@ -12,8 +22,8 @@ const sendSetlist = async (list, name) => {
     name: name,
     songs: list.map(song => song.id)
   }
-  const response = await axios.post(`${baseUrl}/setlist/`, setlist)
+  const response = await axios.post(`${baseApiUrl}/setlist/`, setlist)
   return await response.data
 }
 
-export default { getSetlist, sendSetlist }
+export default { getAllSetlists, sendSetlist, getAllSongs }

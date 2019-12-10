@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import AuthButton from './AuthButton'
 import { initializeSpotifyTracks } from './reducers/spotifyReducer'
-import spotifyReducer from './reducers/spotifyReducer'
+import { spotifyImportSongParser } from './util/helpers'
+import { parse } from 'path'
 
 const ContainerRight = styled.div`
   float: right;
@@ -19,7 +20,7 @@ const ContainerLeft = styled.div`
 
 const List = styled.ul``
 
-const Track = styled.li`
+const Song = styled.li`
   list-style-type: none;
   border: 2px solid palevioletred;
   border-radius: 5px;
@@ -31,32 +32,51 @@ const Button = styled.button`
   margin: 2px;
 `
 
+const SaveButton = styled.button`
+  border: 2px solid palevioletred;
+  border-radius: 5px;
+  margin-left: 45%;
+  margin-right 45%;
+`
+
 const ImportList = props => {
-  const [listLeft, setListLeft] = useState([])
-  const [listRight, setListRight] = useState([])
+  const [existingList, setExistingList] = useState([])
+  const [listBuilder, setListBuilder] = useState([])
   const [spotifyPlaylistId, setSpotifyPlaylistId] = useState('')
 
   useEffect(() => {
-    setListLeft(props.tracks)
+    const parsedSongs = spotifyImportSongParser(props.tracks)
+    setExistingList(parsedSongs)
   }, [])
 
   const transferToList = (item, origin) => {
     if (origin === 'left') {
-      setListLeft(listLeft.filter(listItem => listItem !== item))
-      setListRight(listRight.concat(item))
+      setExistingList(existingList.filter(listItem => listItem !== item))
+      setListBuilder(listBuilder.concat(item))
     }
     if (origin === 'right') {
-      setListRight(listRight.filter(listItem => listItem !== item))
-      setListLeft(listLeft.concat(item))
+      setListBuilder(listBuilder.filter(listItem => listItem !== item))
+      setExistingList(existingList.concat(item))
     }
   }
 
+  //Check if Spotify is uthorized
   if (props.accessToken === '') {
     return (
       <div>
         <AuthButton />
       </div>
     )
+  }
+
+  const saveSongs = () => {
+    console.log('SAVE SONGS')
+    // DO THIS
+  }
+
+  const changeSongKey = () => {
+    console.log('CHANGE KEY')
+    // DO THIS
   }
 
   const handleSpotifyPlaylistIdChange = event => {
@@ -69,35 +89,66 @@ const ImportList = props => {
     props.initializeSpotifyTracks(spotifyPlaylistId, token)
   }
 
-  const generateTrackList = (trackList, origin) => {
-    return (
-      <List>
-        {trackList.map(item => {
-          var track = item.track.name.split(' - ')[0]
-          return track.includes('(') ? (
-            <Track onClick={() => transferToList(item, origin)}>
-              {track.split('(')[0]}{' '}
-            </Track>
-          ) : (
-            <Track onClick={() => transferToList(item, origin)}>{track}</Track>
-          )
-        })}
-      </List>
-    )
+  const generateSongList = list => {
+    if (list === 'left') {
+      return (
+        <List>
+          {existingList.map(item => {
+            return (
+              <Song onClick={() => transferToList(item, list)}>
+                {item.name} - {item.key}
+              </Song>
+            )
+          })}
+        </List>
+      )
+    }
+    if (list === 'right') {
+      return (
+        <List>
+          {listBuilder.map(item => {
+            return (
+              <React.Fragment>
+                <Song onClick={() => transferToList(item, list)}>
+                  {item.name}
+                </Song>
+                <input
+                  type='text'
+                  value={item.key}
+                  onChange={changeSongKey}
+                ></input>
+              </React.Fragment>
+            )
+          })}
+        </List>
+      )
+    }
+  }
+
+  const generateButton = () => {
+    if (existingList.length === 0) {
+      return (
+        <div>
+          Playlist ID:
+          <input
+            type='text'
+            value={spotifyPlaylistId}
+            onChange={handleSpotifyPlaylistIdChange}
+          ></input>
+          <Button onClick={importPlaylist}>IMPORT PLAYLIST</Button>
+        </div>
+      )
+    } else {
+      return <SaveButton onClick={saveSongs}>Save Songs</SaveButton>
+    }
   }
 
   return (
-    <div>
-      Playlist ID:
-      <input
-        type='text'
-        value={spotifyPlaylistId}
-        onChange={handleSpotifyPlaylistIdChange}
-      ></input>
-      <Button onClick={importPlaylist}>IMPORT PLAYLIST</Button>
-      <ContainerLeft>{generateTrackList(listLeft, 'left')}</ContainerLeft>
-      <ContainerRight>{generateTrackList(listRight, 'right')}</ContainerRight>
-    </div>
+    <React.Fragment>
+      {generateButton()}
+      <ContainerLeft>{generateSongList('left')}</ContainerLeft>
+      <ContainerRight>{generateSongList('right')}</ContainerRight>
+    </React.Fragment>
   )
 }
 
@@ -109,7 +160,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { initializeSpotifyTracks }
-)(ImportList)
+export default connect(mapStateToProps, { initializeSpotifyTracks })(ImportList)

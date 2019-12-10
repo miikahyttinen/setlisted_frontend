@@ -29,6 +29,10 @@ const Button = styled.button`
   margin: 2px;
 `
 
+const SelectorContainer = styled.div`
+  height: 24px;
+`
+
 const SongList = props => {
   const [existingList, setExistingList] = useState([])
   const [listBuilder, setListBuilder] = useState([])
@@ -94,17 +98,18 @@ const SongList = props => {
   return (
     <div>
       <ContainerLeft>
-        <div>
+        <SelectorContainer>
+          Build from:
           <select onChange={handleSetlistChange}>
             {props.setlists.map(setlist => {
               return <option value={setlist.name}>{setlist.name}</option>
             })}
           </select>
-        </div>
+        </SelectorContainer>
         {generateSongList('left')}
       </ContainerLeft>
       <ContainerRight>
-        <div>
+        <SelectorContainer>
           New setlist:
           <input
             type='text'
@@ -112,7 +117,7 @@ const SongList = props => {
             onChange={handListNewNameChange}
           ></input>
           <Button onClick={saveSetlist}>SAVE SETLIST</Button>
-        </div>
+        </SelectorContainer>
         {generateSongList('right')}
       </ContainerRight>
     </div>

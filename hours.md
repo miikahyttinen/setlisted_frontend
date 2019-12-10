@@ -20,5 +20,8 @@
 | 4.11.2019  | 2     | Front               | Connecting front end to api                 |
 | 4.11.2019  | 2     | Front               | Setlist creation from front end             |
 | 10.11.2019 | 4     | Front               | Spotify import by playlist ID               |
+| 8.12.2019  | 2     | Front               | Styling                                     |
+| 9.12.2019  | 3     | Front               | Parsing import data in fornt end            |
+| 10.12.2019 | 1     | Back                | New endpoints                               |
 
 Total: 47,5h
