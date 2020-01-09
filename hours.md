@@ -23,7 +23,8 @@
 | 8.12.2019  | 2     | Front               | Styling                                     |
 | 9.12.2019  | 3     | Front               | Parsing import data in fornt end            |
 | 10.12.2019 | 2     | Back                | New endpoints                               |
+| 12.12.2019 | 0,5   | Misc                | Demo session with upcoming users            |
 | 8.1.2019   | 7     | Front               | Better UI for song list, Adding reducers    |
 | 9.1.2019   | 3     | Front               | Connecting hooks and reducers, better ui    |
 
-Total: 66,5h
+Total: 63h
