@@ -7,16 +7,6 @@ const getAllSetlists = async () => {
   return await response.data
 }
 
-const getAllSongs = async () => {
-  const response = await axios.get(`${baseApiUrl}/song/all`)
-  const allSongs = {
-    id: 'allsongs',
-    name: 'All Songs',
-    songs: response.data
-  }
-  return allSongs
-}
-
 const sendSetlist = async (list, name) => {
   const setlist = {
     name: name,
@@ -26,4 +16,4 @@ const sendSetlist = async (list, name) => {
   return await response.data
 }
 
-export default { getAllSetlists, sendSetlist, getAllSongs }
+export default { getAllSetlists, sendSetlist }

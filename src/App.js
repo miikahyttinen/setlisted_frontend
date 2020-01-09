@@ -4,8 +4,10 @@ import SongList from './SongList'
 import ImportList from './ImportList'
 import { connect } from 'react-redux'
 import { initializeSpotifyTracks } from './reducers/spotifyReducer'
-import { initializeSetlists, initializeSongs } from './reducers/setlistReducer'
+import { initializeSetlists } from './reducers/setlistReducer'
+import { initializeSongs } from './reducers/songReducer'
 import { createAccessToken } from './reducers/accessTokenReducer'
+import { setSelectSetlist } from './reducers/selectSetlistReducer'
 import {
   BrowserRouter as Router,
   Route,
@@ -35,6 +37,7 @@ const App = props => {
   useEffect(() => {
     props.initializeSetlists()
     props.initializeSongs()
+    props.setSelectSetlist('default')
     if (queryString.parse(window.location.search).access_token !== undefined) {
       props.createAccessToken(
         queryString.parse(window.location.search).access_token
@@ -78,5 +81,6 @@ export default connect(mapStateToProps, {
   initializeSpotifyTracks,
   initializeSetlists,
   initializeSongs,
-  createAccessToken
+  createAccessToken,
+  setSelectSetlist
 })(App)

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import AuthButton from './AuthButton'
 import { initializeSpotifyTracks } from './reducers/spotifyReducer'
 import { spotifyImportSongParser } from './util/helpers'
-import { parse } from 'path'
+import songService from './services/songService'
 
 const ContainerRight = styled.div`
   float: right;
@@ -60,7 +60,7 @@ const ImportList = props => {
     }
   }
 
-  //Check if Spotify is uthorized
+  //Check if Spotify is authorized
   if (props.accessToken === '') {
     return (
       <div>
@@ -70,13 +70,25 @@ const ImportList = props => {
   }
 
   const saveSongs = () => {
-    console.log('SAVE SONGS')
-    // DO THIS
+    songService.sendSongs(listBuilder)
   }
 
-  const changeSongKey = () => {
-    console.log('CHANGE KEY')
-    // DO THIS
+  const changeSongKey = event => {
+    const key = event.target.value
+    const song = event.target.name
+    var i
+    for (i = 0; i < listBuilder.length; i++) {
+      if (listBuilder[i].name === song) break
+    }
+    const leftPart = listBuilder.slice(0, i)
+    const rightPart = listBuilder.slice(i + 1, listBuilder.length)
+    const songToUpdate = {
+      name: listBuilder[i].name,
+      artist: listBuilder[i].artist,
+      key: key
+    }
+    const updatedArray = leftPart.concat([songToUpdate]).concat(rightPart)
+    setListBuilder(updatedArray)
   }
 
   const handleSpotifyPlaylistIdChange = event => {
@@ -96,7 +108,7 @@ const ImportList = props => {
           {existingList.map(item => {
             return (
               <Song onClick={() => transferToList(item, list)}>
-                {item.name} - {item.key}
+                {item.name}
               </Song>
             )
           })}
@@ -115,6 +127,7 @@ const ImportList = props => {
                 <input
                   type='text'
                   value={item.key}
+                  name={item.name}
                   onChange={changeSongKey}
                 ></input>
               </React.Fragment>
@@ -126,7 +139,7 @@ const ImportList = props => {
   }
 
   const generateButton = () => {
-    if (existingList.length === 0) {
+    if (existingList.length === 0 && listBuilder.length === 0) {
       return (
         <div>
           Playlist ID:
@@ -144,11 +157,11 @@ const ImportList = props => {
   }
 
   return (
-    <React.Fragment>
+    <div>
       {generateButton()}
       <ContainerLeft>{generateSongList('left')}</ContainerLeft>
       <ContainerRight>{generateSongList('right')}</ContainerRight>
-    </React.Fragment>
+    </div>
   )
 }
 

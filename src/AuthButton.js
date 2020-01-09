@@ -8,6 +8,7 @@ const Button = styled.button`
   border: 2px solid palevioletred;
   padding: 0.25em 1em;
   border-radius: 3px;
+  display: inline-block;
 `
 const Image = styled.img`
   widht: 30px;

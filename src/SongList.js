@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import setlistService from './services/setlistService'
+import NewSongPopup from './NewSongPopup'
+import SelectSetlistPopup from './SelectSetlistPopup'
+import SaveSetlistPopup from './SaveSetlistPopup'
 
 const ContainerRight = styled.div`
   float: right;
@@ -24,9 +27,11 @@ const Song = styled.li`
   margin: 2px;
 `
 const Button = styled.button`
+  background: transparent;
+  color: palevioletred;
   border: 2px solid palevioletred;
-  border-radius: 5px;
-  margin: 2px;
+  padding: 0.25em 1em;
+  border-radius: 3px;
 `
 
 const SelectorContainer = styled.div`
@@ -34,9 +39,23 @@ const SelectorContainer = styled.div`
 `
 
 const SongList = props => {
+  // TODO: Replace these with Redux
   const [existingList, setExistingList] = useState([])
   const [listBuilder, setListBuilder] = useState([])
-  const [newListName, setNewListName] = useState('')
+
+  useEffect(() => {
+    if (props.selectSetlist === 'All Songs') {
+      console.log('IF')
+      setExistingList(props.allSongs.songs)
+    } else {
+      const selected = props.setlists.filter(
+        setlist => setlist.name === props.selectSetlist
+      )
+      if (selected.length > 0) {
+        setExistingList(selected[0].songs)
+      }
+    }
+  }, [props])
 
   const transferToList = (item, origin) => {
     if (origin === 'left') {
@@ -78,45 +97,18 @@ const SongList = props => {
     }
   }
 
-  const handleSetlistChange = event => {
-    const setlistName = event.target.value
-    setExistingList(
-      props.setlists.filter(setlist => setlist.name === setlistName)[0].songs
-    )
-  }
-
-  const handListNewNameChange = event => {
-    const newListName = event.target.value
-    setNewListName(newListName)
-  }
-
-  const saveSetlist = () => {
-    setlistService.sendSetlist(listBuilder, newListName)
-    setListBuilder([])
-  }
-
   return (
     <div>
       <ContainerLeft>
         <SelectorContainer>
-          Build from:
-          <select onChange={handleSetlistChange}>
-            {props.setlists.map(setlist => {
-              return <option value={setlist.name}>{setlist.name}</option>
-            })}
-          </select>
+          <SelectSetlistPopup />
+          <NewSongPopup />
         </SelectorContainer>
         {generateSongList('left')}
       </ContainerLeft>
       <ContainerRight>
         <SelectorContainer>
-          New setlist:
-          <input
-            type='text'
-            value={newListName}
-            onChange={handListNewNameChange}
-          ></input>
-          <Button onClick={saveSetlist}>SAVE SETLIST</Button>
+          <SaveSetlistPopup songs={listBuilder} />
         </SelectorContainer>
         {generateSongList('right')}
       </ContainerRight>
@@ -126,7 +118,9 @@ const SongList = props => {
 
 const mapStateToProps = state => {
   return {
-    setlists: state.setlists
+    setlists: state.setlists,
+    allSongs: state.songs,
+    selectSetlist: state.selectSetlist
   }
 }
 

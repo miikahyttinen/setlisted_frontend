@@ -1,0 +1,18 @@
+.popup-arrow {
+  background: #f1ffba !important;
+}
+
+.popup-content {
+  background: #f1ffba !important;
+}
+
+.menu-item {
+  cursor: pointer;
+  padding: 5px;
+  height: auto;
+  border-bottom: 2px solid palevioletred;
+  text-align: center;
+}
+.menu-item:hover {
+  color: palevioletred;
+}

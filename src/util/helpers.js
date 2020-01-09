@@ -1,5 +1,3 @@
-import { parse } from 'path'
-
 export const spotifyImportSongParser = importedList => {
   const parsedSongs = importedList.map(item => {
     // remove unwanted parenthisis

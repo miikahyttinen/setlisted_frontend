@@ -10,21 +10,9 @@ export const initializeSetlists = () => {
   }
 }
 
-export const initializeSongs = () => {
-  return async dispatch => {
-    const songs = await setlistService.getAllSongs()
-    dispatch({
-      type: 'INIT_SONGS',
-      content: songs
-    })
-  }
-}
-
 const setlistReducer = (state = [], action) => {
   switch (action.type) {
     case 'INIT_SETLISTS':
-      return state.concat(action.content)
-    case 'INIT_SONGS':
       return state.concat(action.content)
     default:
       return state
