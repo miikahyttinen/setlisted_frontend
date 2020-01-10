@@ -23,8 +23,6 @@ const Input = styled.input`
 const SaveSetlistPopup = props => {
   const [newSetlistName, setNewSetlistName] = useState('')
 
-  console.log('PROPS', props)
-
   const handleNewSetlistNameChange = event => {
     const newSetlistName = event.target.value
     setNewSetlistName(newSetlistName)

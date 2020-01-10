@@ -60,7 +60,7 @@ const ImportList = props => {
     }
   }
 
-  //Check if Spotify is authorized
+  // Check if Spotify is authorized
   if (props.accessToken === '') {
     return (
       <div>

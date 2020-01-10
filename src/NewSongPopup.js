@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Popup from 'reactjs-popup'
 import styled from 'styled-components'
 import './styles/popup.css'
+import songService from './services/songService'
 
 const Button = styled.button`
   background: transparent;
@@ -9,6 +10,7 @@ const Button = styled.button`
   border: 2px solid palevioletred;
   padding: 0.25em 1em;
   border-radius: 3px;
+  left-margin: 10px;
 `
 
 const inputStyle =
@@ -42,6 +44,15 @@ const NewSongPopup = () => {
     setNewSongKey(newSongKey)
   }
 
+  const saveSong = () => {
+    const newSong = {
+      name: newSongName,
+      artist: newSongArtist,
+      key: newSongKey
+    }
+    songService.sendOneSong(newSong)
+  }
+
   return (
     <Popup position='bottom center' trigger={<Button>NEW SONG</Button>}>
       Name:
@@ -62,6 +73,7 @@ const NewSongPopup = () => {
         value={newSongKey}
         onChange={handleNewSongKeyChange}
       ></KeyInput>
+      <Button onClick={saveSong}>SAVE</Button>
     </Popup>
   )
 }

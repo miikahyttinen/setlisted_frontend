@@ -26,5 +26,7 @@
 | 12.12.2019 | 0,5   | Misc                | Demo session with upcoming users            |
 | 8.1.2019   | 7     | Front               | Better UI for song list, Adding reducers    |
 | 9.1.2019   | 3     | Front               | Connecting hooks and reducers, better ui    |
+| 10.1.2019  | 1,5   | Front               | UI to save new songs                        |
+| 11.1.2019  | 0,5   | Back                | Endpoint for removing songs from DB         |
 
-Total: 63h
+Total: 68 h
