@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import queryString from 'query-string'
 import SongList from './SongList'
 import ImportList from './ImportList'
+import ManageSongs from './ManageSongs'
 import { connect } from 'react-redux'
 import { initializeSpotifyTracks } from './reducers/spotifyReducer'
 import { initializeSetlists } from './reducers/setlistReducer'
@@ -59,11 +60,15 @@ const App = props => {
             <Link style={linkStyle} to='/import'>
               IMPORT
             </Link>
+            <Link style={linkStyle} to='/manage'>
+              MANAGE SONGS
+            </Link>
           </NavBar>
 
           <Route exact path='/' render={() => <Home />} />
           <Route exact path='/setlists' render={() => <SongList />} />
           <Route exact path='/import' render={() => <ImportList />} />
+          <Route exact path='/manage' render={() => <ManageSongs />} />
         </div>
       </Router>
     </Page>

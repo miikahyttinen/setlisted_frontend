@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import setlistService from './services/setlistService'
 import NewSongPopup from './NewSongPopup'
 import SelectSetlistPopup from './SelectSetlistPopup'
 import SaveSetlistPopup from './SaveSetlistPopup'
+import DeleteButton from './DeleteButton'
 
 const ContainerRight = styled.div`
   float: right;
@@ -20,18 +20,20 @@ const ContainerLeft = styled.div`
 
 const List = styled.ul``
 
-const Song = styled.li`
+const Song = styled.div`
+  widht: 50%;
+`
+
+const ListItem = styled.li`
   list-style-type: none;
   border: 2px solid palevioletred;
   border-radius: 5px;
   margin: 2px;
 `
-const Button = styled.button`
-  background: transparent;
-  color: palevioletred;
-  border: 2px solid palevioletred;
-  padding: 0.25em 1em;
-  border-radius: 3px;
+
+const SongContainer = styled.div`
+  overflow: hidden;
+  white-space: nowrap;
 `
 
 const SelectorContainer = styled.div`
@@ -39,9 +41,10 @@ const SelectorContainer = styled.div`
 `
 
 const SongList = props => {
-  // TODO: Replace these with Redux
   const [existingList, setExistingList] = useState([])
   const [listBuilder, setListBuilder] = useState([])
+
+  console.log('PROPS', props)
 
   useEffect(() => {
     if (props.selectSetlist === 'All Songs') {
@@ -74,9 +77,14 @@ const SongList = props => {
         <List>
           {existingList.map(item => {
             return (
-              <Song onClick={() => transferToList(item, list)}>
-                {item.name} - {item.key}
-              </Song>
+              <ListItem>
+                <SongContainer>
+                  <Song onClick={() => transferToList(item, list)}>
+                    {item.name} - {item.key}
+                  </Song>
+                  <DeleteButton />
+                </SongContainer>
+              </ListItem>
             )
           })}
         </List>
@@ -87,9 +95,13 @@ const SongList = props => {
         <List>
           {listBuilder.map(item => {
             return (
-              <Song onClick={() => transferToList(item, list)}>
-                {item.name} - {item.key}
-              </Song>
+              <ListItem>
+                <SongContainer>
+                  <Song onClick={() => transferToList(item, list)}>
+                    {item.name} - {item.key}
+                  </Song>
+                </SongContainer>
+              </ListItem>
             )
           })}
         </List>
