@@ -16,3 +16,21 @@ export const spotifyImportSongParser = importedList => {
   })
   return parsedSongs
 }
+
+export const removeDuplicateSongs = (allSongs, setlist) => {
+  if (setlist.length === 0) {
+    return allSongs
+  }
+  const isNotInList = element => {
+    var result = true
+    setlist.forEach(item => {
+      if (item.id === element.id) {
+        result = false
+      }
+    })
+    return result
+  }
+  const filtered = allSongs.filter(isNotInList)
+  console.log('FILTERED', filtered)
+  return filtered
+}

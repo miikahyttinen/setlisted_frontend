@@ -29,5 +29,6 @@
 | 10.1.2019  | 1,5   | Front               | UI to save new songs                        |
 | 11.1.2019  | 0,5   | Back                | Endpoint for removing songs from DB         |
 | 16.1.2019  | 4     | Front               | Functionality to delete songs in UI         |
+| 19.1.2019  | 2     | Front               | Helper function to remove duplicate         |
 
-Total: 72 h
+Total: 74 h

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import NewSongPopup from './NewSongPopup'
 import SelectSetlistPopup from './SelectSetlistPopup'
 import SaveSetlistPopup from './SaveSetlistPopup'
-import DeleteButton from './DeleteButton'
+import { removeDuplicateSongs } from './util/helpers'
 
 const ContainerRight = styled.div`
   float: right;
@@ -44,12 +44,10 @@ const SongList = props => {
   const [existingList, setExistingList] = useState([])
   const [listBuilder, setListBuilder] = useState([])
 
-  console.log('PROPS', props)
-
   useEffect(() => {
     if (props.selectSetlist === 'All Songs') {
       console.log('IF')
-      setExistingList(props.allSongs.songs)
+      setExistingList(removeDuplicateSongs(props.allSongs.songs, listBuilder))
     } else {
       const selected = props.setlists.filter(
         setlist => setlist.name === props.selectSetlist
@@ -82,7 +80,6 @@ const SongList = props => {
                   <Song onClick={() => transferToList(item, list)}>
                     {item.name} - {item.key}
                   </Song>
-                  <DeleteButton />
                 </SongContainer>
               </ListItem>
             )
