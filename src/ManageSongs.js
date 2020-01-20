@@ -3,16 +3,24 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import NewSongPopup from './NewSongPopup'
 import DeleteButton from './DeleteButton'
+import EditSongPopup from './EditSongPopup'
 
 const Container = styled.div`
-  width: 100%;
+  width: auto;
+  padding-left: 12%;
+  padding-right: 16%;
+  height: auto;
   background: #daf7a6;
 `
 
-const List = styled.ul``
+const List = styled.ul`
+  margin: auto;
+`
 
 const Song = styled.div`
-  widht: 50%;
+  display: inline-block;
+  width: 70%;
+  height: 100%;
 `
 
 const ListItem = styled.li`
@@ -23,8 +31,13 @@ const ListItem = styled.li`
 `
 
 const SongContainer = styled.div`
-  overflow: hidden;
+  display: block;
+  width: auto;
+  margin: 0;
+  padding: 0;
   white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
 `
 
 const SelectorContainer = styled.div`
@@ -50,6 +63,12 @@ const ManageSongs = props => {
                     {item.name} - {item.key}
                   </Song>
                   <DeleteButton id={item.id} />
+                  <EditSongPopup
+                    name={item.name}
+                    artist={item.artist}
+                    songey={item.key}
+                    id={item.id}
+                  />
                 </SongContainer>
               </ListItem>
             )

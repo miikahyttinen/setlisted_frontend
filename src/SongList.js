@@ -46,14 +46,13 @@ const SongList = props => {
 
   useEffect(() => {
     if (props.selectSetlist === 'All Songs') {
-      console.log('IF')
       setExistingList(removeDuplicateSongs(props.allSongs.songs, listBuilder))
     } else {
       const selected = props.setlists.filter(
         setlist => setlist.name === props.selectSetlist
       )
       if (selected.length > 0) {
-        setExistingList(selected[0].songs)
+        setExistingList(removeDuplicateSongs(selected[0].songs, listBuilder))
       }
     }
   }, [props])
