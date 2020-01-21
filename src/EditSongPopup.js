@@ -5,12 +5,13 @@ import './styles/popup.css'
 import songService from './services/songService'
 
 const Button = styled.button`
-  background: transparent;
-  color: palevioletred;
+  background: #e6f2ff;
   border: 2px solid palevioletred;
   padding: 0.25em 1em;
   border-radius: 3px;
-  left-margin: 10px;
+  display: inline-block;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 `
 
 const inputStyle =

@@ -27,4 +27,14 @@ const deleteSong = async id => {
   const response = await axios.delete(`${baseApiUrl}/song/${id}`)
 }
 
-export default { sendSongs, getAllSongs, sendOneSong, deleteSong }
+const sendEditedSong = async song => {
+  const response = await axios.put(`${baseApiUrl}/song`, song)
+}
+
+export default {
+  sendSongs,
+  getAllSongs,
+  sendOneSong,
+  deleteSong,
+  sendEditedSong
+}

@@ -13,6 +13,10 @@ const Container = styled.div`
   background: #daf7a6;
 `
 
+const ButtonContainer = styled.div`
+  float: right;
+`
+
 const List = styled.ul`
   margin: auto;
 `
@@ -62,13 +66,15 @@ const ManageSongs = props => {
                   <Song>
                     {item.name} - {item.key}
                   </Song>
-                  <DeleteButton id={item.id} />
-                  <EditSongPopup
-                    name={item.name}
-                    artist={item.artist}
-                    songey={item.key}
-                    id={item.id}
-                  />
+                  <ButtonContainer>
+                    <DeleteButton id={item.id} />
+                    <EditSongPopup
+                      name={item.name}
+                      artist={item.artist}
+                      songKey={item.key}
+                      id={item.id}
+                    />
+                  </ButtonContainer>
                 </SongContainer>
               </ListItem>
             )
