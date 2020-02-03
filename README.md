@@ -1,6 +1,6 @@
 # Setlisted
 
-Setlisted is a tool to view and save setlists. Front-end runs React in a browser and is connected to back-end REST API wirtten with Node.js, which serves data from Spotify API and from App's own MONGO database. This is an excericse project for Full Stack Programming course at the University of Helsinki (CS Department).
+Setlisted is a tool to view and save setlists. Front end runs React in a browser and is connected to back end REST API wirtten with Node.js which serves data from Spotify API and from App's own MONGO database. I've used mainly styled-components to style the app from sctrach to learn as much html ans css as possible. This is an excericse project for Full Stack Programming course at the University of Helsinki (CS Department).
 
 **Working hours:** https://github.com/miikahyttinen/setlisted_frontend/blob/master/hours.md
 
