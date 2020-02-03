@@ -24,14 +24,16 @@
 | 9.12.2019  | 3     | Front               | Parsing import data in fornt end                      |
 | 10.12.2019 | 2     | Back                | New endpoints                                         |
 | 12.12.2019 | 0,5   | Misc                | Demo session with upcoming users                      |
-| 8.1.2019   | 7     | Front               | Better UI for song list, Adding reducers              |
-| 9.1.2019   | 3     | Front               | Connecting hooks and reducers, better ui              |
-| 10.1.2019  | 1,5   | Front               | UI to save new songs                                  |
-| 11.1.2019  | 0,5   | Back                | Endpoint for removing songs from DB                   |
-| 16.1.2019  | 4     | Front               | Functionality to delete songs in UI                   |
-| 19.1.2019  | 2     | Front               | Helper function to remove duplicate songs             |
-| 20.1.2019  | 4     | Front               | Editing songs in UI, styling                          |
-| 20.1.2019  | 2     | Front               | Conecting front end to API for editing songs, styling |
-| 20.1.2019  | 1     | Front               | Endpoint to PUT song (edit)                           |
+| 8.1.2020   | 7     | Front               | Better UI for song list, Adding reducers              |
+| 9.1.2020   | 3     | Front               | Connecting hooks and reducers, better ui              |
+| 10.1.2020  | 1,5   | Front               | UI to save new songs                                  |
+| 11.1.2020  | 0,5   | Back                | Endpoint for removing songs from DB                   |
+| 16.1.2020  | 4     | Front               | Functionality to delete songs in UI                   |
+| 19.1.2020  | 2     | Front               | Helper function to remove duplicate songs             |
+| 20.1.2020  | 4     | Front               | Editing songs in UI, styling                          |
+| 20.1.2020  | 2     | Front               | Conecting front end to API for editing songs, styling |
+| 20.1.2020  | 1     | Front               | Endpoint to PUT song (edit)                           |
+| 23.1.2020  | 3     | Front               | Better redux actions                                  |
+| 3.2.2020   | 4     | Front               | Real time rendering when deleting and adding songs    |
 
-Total: 81 h
+Total: 88 h
