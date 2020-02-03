@@ -10,6 +10,8 @@ Setlisted is a tool to view and save setlists. Front-end runs React in a browser
 
 Setlisted solves a problem of writing and storing setlists for a live music performance. It is very common to write setlists by hand (manually by hand on a computer) and there is no convenient way to store or share setlists. Making a setlist is a time-consuming task. It can take an hour and one can easily make mistakes, for example write a wrong key, forget to add the new song you planned to play or get stuck in patterns like repeatedly playing the same songs in every performance.
 
+I've been arranging demo sessions with my "clients" (musician colleagues) so they can comment the current version. I've got great feedback and have seen the problems that I couldn't see myself. 
+
 ## Minimum viable product
 
 The MVP should have following features:
