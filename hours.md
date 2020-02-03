@@ -35,5 +35,6 @@
 | 20.1.2020  | 1     | Front               | Endpoint to PUT song (edit)                           |
 | 23.1.2020  | 3     | Front               | Better redux actions                                  |
 | 3.2.2020   | 4     | Front               | Real time rendering when deleting and adding songs    |
+| 3.2.2020   | 1     | Misc                | Deploying demo version to Heroku                      |
 
-Total: 88 h
+Total: 89 hours

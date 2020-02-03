@@ -1,6 +1,6 @@
 # Setlisted
 
-Setlisted is a tool to view and save setlists. Front-end runs React in a browser and is connected to back-end wirtten with Node.js, which serves data from Spotify API and from App's it's own database. This is an excericse project for Full Stack Programming course at the University of Helsinki (CS Department).
+Setlisted is a tool to view and save setlists. Front-end runs React in a browser and is connected to back-end REST API wirtten with Node.js, which serves data from Spotify API and from App's own MONGO database. This is an excericse project for Full Stack Programming course at the University of Helsinki (CS Department).
 
 **Working hours:** https://github.com/miikahyttinen/setlisted_frontend/blob/master/hours.md
 
@@ -14,20 +14,24 @@ Setlisted solves a problem of writing and storing setlists for a live music perf
 
 The MVP should have following features:
 
-1. creating a new setlist
-2. viewing all setlists of an user
-3. sharing setlists to everyone (in some way) as an user
-4. registration for new users
-5. login as an user
+1. creating and managing setlists and songs (done)
+2. viewing all setlists of an user (done)
+3. sharing setlists to everyone (in some way) as an user (todo)
+4. registration for new users (todo)
+5. login as an user (todo)
 
 ## Additional features
 
-- Importing playlists from the Spotify API (decided to do this)
+- Importing playlists from the Spotify API (done)
 - Automated setlist creation (someday)
 - Statistics of played songs (someday)
 - Serving data of played songs between users (someday)
 - Commenting (someday)
 
+## Demo version
+
+Version 0.01 runs in Heroku. You can try it here: https://setlisted-demo.herokuapp.com/
+
 ## Tests
 
-I'm planning to do E2E tests using Cypress library.
+I'm planning to do E2E tests using Cypress library. (todo)
