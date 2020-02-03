@@ -12,9 +12,9 @@ import { setSelectSetlist } from './reducers/selectSetlistReducer'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
+  Link /*,
   Redirect,
-  withRouter
+  withRouter*/
 } from 'react-router-dom'
 import Home from './Home'
 import styled from 'styled-components'
@@ -44,7 +44,7 @@ const App = props => {
         queryString.parse(window.location.search).access_token
       )
     }
-  }, [])
+  }, [props])
 
   return (
     <Page>

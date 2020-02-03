@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Popup from 'reactjs-popup'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
@@ -31,6 +31,7 @@ const SelectSetlistPopup = props => {
         {props.setlists.map(setlist => {
           return (
             <div
+              key={setlist.id}
               className='menu-item'
               onClick={() => handleSetlistChange(setlist.name)}
             >

@@ -20,6 +20,10 @@ const ContainerLeft = styled.div`
 
 const List = styled.ul``
 
+const Input = styled.input`
+  width: 300px;
+`
+
 const Song = styled.li`
   list-style-type: none;
   border: 2px solid palevioletred;
@@ -47,7 +51,7 @@ const ImportList = props => {
   useEffect(() => {
     const parsedSongs = spotifyImportSongParser(props.tracks)
     setExistingList(parsedSongs)
-  }, [])
+  }, [props])
 
   const transferToList = (item, origin) => {
     if (origin === 'left') {
@@ -143,12 +147,25 @@ const ImportList = props => {
       return (
         <div>
           Playlist ID:
-          <input
+          <Input
             type='text'
             value={spotifyPlaylistId}
             onChange={handleSpotifyPlaylistIdChange}
-          ></input>
+          ></Input>
           <Button onClick={importPlaylist}>IMPORT PLAYLIST</Button>
+          <p>
+            In this demo version you can import Spotify playlists with the id of
+            your Spotify setlists.
+          </p>
+          <p>
+            1. Go to your Spotify account (Desktop, Mobile or Broweser) <br />
+            2. Double click your playlist <br />
+            3. Go to share <br />
+            4. Click copy Spotify URI <br />
+            5. Paste URI to the field above <br />
+            6. Remove "spotify:playlist:" -part <br />
+            7. Click IMPORT PLAYLIST
+          </p>
         </div>
       )
     } else {

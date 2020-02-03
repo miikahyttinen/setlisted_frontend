@@ -4,7 +4,7 @@ export const initializeSpotifyTracks = (id, token) => {
   return async dispatch => {
     const tracks = await spotifyService.getPlaylist(id, token)
     dispatch({
-      type: 'INIT_SPOTIFY',
+      type: 'INIT_SPOTIFY_TRACKS',
       content: tracks
     })
   }
@@ -12,7 +12,7 @@ export const initializeSpotifyTracks = (id, token) => {
 
 const spotifyReducer = (state = [], action) => {
   switch (action.type) {
-    case 'INIT_SPOTIFY':
+    case 'INIT_SPOTIFY_TRACKS':
       return state.concat(action.content)
     default:
       return state

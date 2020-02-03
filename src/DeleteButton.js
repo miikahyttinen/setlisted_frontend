@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import songService from './services/songService'
+import { connect } from 'react-redux'
+import { deleteSong } from './reducers/songReducer'
 
 const Button = styled.button`
   background: #ff4d4d;
@@ -17,19 +19,25 @@ const ButtonContainer = styled.div`
   height: 100%;
 `
 
-const deleteSong = id => {
-  songService.deleteSong(id)
-}
-
 const DeleteButton = props => {
-  console.log('PROPS', props)
+  const handleDeleteSong = id => {
+    props.deleteSong(id)
+    songService.deleteSong(id)
+  }
+
   return (
     <ButtonContainer>
-      <a onClick={() => deleteSong(props.id)}>
+      <div onClick={() => handleDeleteSong(props.id)}>
         <Button>DELETE</Button>
-      </a>
+      </div>
     </ButtonContainer>
   )
 }
 
-export default DeleteButton
+const mapStateToProps = state => {
+  return {
+    allSongs: state.songs
+  }
+}
+
+export default connect(mapStateToProps, { deleteSong })(DeleteButton)

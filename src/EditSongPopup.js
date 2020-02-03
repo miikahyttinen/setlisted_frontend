@@ -20,10 +20,10 @@ const inputStyle =
 const Input = styled.input`
   ${inputStyle}
 `
-const KeyInput = styled.input`
+/*const KeyInput = styled.input`
   ${inputStyle}
   margin-left: 20px;
-`
+`*/
 
 const EditSongPopup = props => {
   const [songName, setSongName] = useState(props.name)

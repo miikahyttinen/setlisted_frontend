@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import NewSongPopup from './NewSongPopup'
@@ -49,19 +49,19 @@ const SelectorContainer = styled.div`
 `
 
 const ManageSongs = props => {
-  const [allSongs, setAllSongs] = useState([])
+  //const [allSongs, setAllSongs] = useState([])
 
   useEffect(() => {
-    setAllSongs(props.allSongs.songs)
+    //setAllSongs(props.allSongs.songs)
   }, [props])
 
   const generateSongList = () => {
-    if (allSongs !== undefined) {
+    if (props.allSongs.songs !== undefined) {
       return (
         <List>
-          {allSongs.map(item => {
+          {props.allSongs.songs.map(item => {
             return (
-              <ListItem>
+              <ListItem key={item.id}>
                 <SongContainer>
                   <Song>
                     {item.name} - {item.key}

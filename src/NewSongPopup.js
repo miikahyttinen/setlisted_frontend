@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Popup from 'reactjs-popup'
 import styled from 'styled-components'
 import './styles/popup.css'
-import songService from './services/songService'
+import { addSong } from './reducers/songReducer'
+import { connect } from 'react-redux'
 
 const Button = styled.button`
   background: transparent;
@@ -24,7 +25,7 @@ const KeyInput = styled.input`
   margin-left: 20px;
 `
 
-const NewSongPopup = () => {
+const NewSongPopup = props => {
   const [newSongName, setNewSongName] = useState('')
   const [newSongArtist, setNewSongArtist] = useState('')
   const [newSongKey, setNewSongKey] = useState('')
@@ -50,7 +51,7 @@ const NewSongPopup = () => {
       artist: newSongArtist,
       key: newSongKey
     }
-    songService.sendOneSong(newSong)
+    props.addSong(newSong)
   }
 
   return (
@@ -78,4 +79,10 @@ const NewSongPopup = () => {
   )
 }
 
-export default NewSongPopup
+const mapStateToProps = state => {
+  return {
+    allSongs: state.songs
+  }
+}
+
+export default connect(mapStateToProps, { addSong })(NewSongPopup)

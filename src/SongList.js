@@ -55,7 +55,7 @@ const SongList = props => {
         setExistingList(removeDuplicateSongs(selected[0].songs, listBuilder))
       }
     }
-  }, [props])
+  }, [props, listBuilder])
 
   const transferToList = (item, origin) => {
     if (origin === 'left') {

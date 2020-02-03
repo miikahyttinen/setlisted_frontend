@@ -21,6 +21,7 @@ export const removeDuplicateSongs = (allSongs, setlist) => {
   if (setlist.length === 0) {
     return allSongs
   }
+  // callback function for filter function
   const isNotInList = element => {
     var result = true
     setlist.forEach(item => {
@@ -31,6 +32,5 @@ export const removeDuplicateSongs = (allSongs, setlist) => {
     return result
   }
   const filtered = allSongs.filter(isNotInList)
-  console.log('FILTERED', filtered)
   return filtered
 }

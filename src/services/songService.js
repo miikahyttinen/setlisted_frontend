@@ -11,6 +11,7 @@ const sendSongs = async songs => {
 
 const sendOneSong = async song => {
   const response = await axios.post(`${baseApiUrl}/song`, song)
+  return response.data
 }
 
 const getAllSongs = async () => {
@@ -25,10 +26,12 @@ const getAllSongs = async () => {
 
 const deleteSong = async id => {
   const response = await axios.delete(`${baseApiUrl}/song/${id}`)
+  return response.data
 }
 
 const sendEditedSong = async song => {
   const response = await axios.put(`${baseApiUrl}/song`, song)
+  return response.data
 }
 
 export default {
