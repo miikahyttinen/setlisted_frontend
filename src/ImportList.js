@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import AuthButton from './AuthButton'
 import { initializeSpotifyTracks } from './reducers/spotifyReducer'
-import { spotifyImportSongParser } from './util/helpers'
+import { spotifyImportSongParser } from './utils/helpers'
 import songService from './services/songService'
 
 const ContainerRight = styled.div`

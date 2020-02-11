@@ -36,5 +36,6 @@
 | 23.1.2020  | 3     | Front               | Better redux actions                                  |
 | 3.2.2020   | 4     | Front               | Real time rendering when deleting and adding songs    |
 | 3.2.2020   | 1     | Misc                | Deploying demo version to Heroku                      |
+| 11.2.2020  | 2     | Back                | Refacotring API routes in back end                    |
 
-Total: 89 hours
+Total: 91 hours

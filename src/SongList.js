@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import NewSongPopup from './NewSongPopup'
 import SelectSetlistPopup from './SelectSetlistPopup'
 import SaveSetlistPopup from './SaveSetlistPopup'
-import { removeDuplicateSongs } from './util/helpers'
+import { removeDuplicateSongs } from './utils/helpers'
 
 const ContainerRight = styled.div`
   float: right;

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseApiUrl = 'http://localhost:3001'
+const baseApiUrl = 'http://localhost:3001/api'
 
 const sendSongs = async songs => {
   songs.forEach(async song => {

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseApiUrl = 'http://localhost:3001'
+const baseApiUrl = 'http://localhost:3001/api'
 
 const getAllSetlists = async () => {
   const response = await axios.get(`${baseApiUrl}/setlist/all`)
