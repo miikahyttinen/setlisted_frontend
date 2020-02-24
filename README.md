@@ -1,6 +1,6 @@
 # Setlisted
 
-Setlisted is a tool to view and save setlists. Front-end runs React in a browser and is connected to back-end REST API wirtten with Node.js, which serves data from Spotify API and from App's own MONGO database. This is an excericse project for Full Stack Programming course at the University of Helsinki (CS Department).
+Setlisted is a tool to view and save setlists. Front end runs React in a browser and is connected to back end REST API wirtten with Node.js which serves data from Spotify API and from App's own MONGO database. I've used mainly styled-components to style the app from sctrach to learn as much html ans css as possible. This is an excericse project for Full Stack Programming course at the University of Helsinki (CS Department).
 
 **Working hours:** https://github.com/miikahyttinen/setlisted_frontend/blob/master/hours.md
 
@@ -9,6 +9,8 @@ Setlisted is a tool to view and save setlists. Front-end runs React in a browser
 ## The problem
 
 Setlisted solves a problem of writing and storing setlists for a live music performance. It is very common to write setlists by hand (manually by hand on a computer) and there is no convenient way to store or share setlists. Making a setlist is a time-consuming task. It can take an hour and one can easily make mistakes, for example write a wrong key, forget to add the new song you planned to play or get stuck in patterns like repeatedly playing the same songs in every performance.
+
+I've been arranging demo sessions with my "clients" (musician colleagues) so they can comment the current version. I've got great feedback and have seen the problems that I couldn't see myself. 
 
 ## Minimum viable product
 
