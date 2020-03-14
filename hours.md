@@ -42,4 +42,4 @@
 | 12.3.2020  | 3     | Back                | Working with token authentication                             |
 | 14.3.2020  | 4     | Back                | Protecting last api endpoints with token auth. Readme updated |
 
-Total: 106 hours
+Total: 105 hours
