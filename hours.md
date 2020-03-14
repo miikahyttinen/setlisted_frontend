@@ -38,5 +38,8 @@
 | 3.2.2020   | 1     | Misc                | Deploying demo version to Heroku                             |
 | 22.2.2020  | 2     | Back                | Controller and model for users                               |
 | 23.2.2020  | 3     | DB                  | Studying and updating Dev DB ready for "Users" functionality |
+| 11.3.2020  | 4     | Back                | Working with user and login features                         |
+| 12.3.2020  | 3     | Back                | Working with token authentication                            |
+| 14.3.2020  | 3     | Back                | Protecting last api endpoints with token auth                |
 
-Total: 96 hours
+Total: 106 hours
