@@ -33,7 +33,6 @@ The MVP should have following features:
 ## Demo version
 
 Version 0.01 runs in Heroku. You can try it here: https://setlisted-demo.herokuapp.com/
-There is no users for this version yet. ersion 0.02 includes
 
 ## Tests
 
